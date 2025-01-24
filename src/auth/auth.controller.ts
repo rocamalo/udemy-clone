@@ -6,7 +6,8 @@ import { LocalAuthGuard } from './guards/local-auth.guard';
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
-  @UseGuards(LocalAuthGuard) // Aplicar la estrategia local
+  @UseGuards(LocalAuthGuard) // Este Guard aplica la local.stragegy.ts y
+  //  ejecuta el metodo validate automaticamente regresando el req.user con su data
   @Post('login')
   async login(@Request() req) {
     return this.authService.login(req.user);

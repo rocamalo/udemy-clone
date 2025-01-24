@@ -19,10 +19,21 @@ export class AuthService {
     return null; // Credenciales inválidas
   }
 
-  async login(user: User): Promise<{ access_token: string }> {
-    const payload = { email: user.email, role: user.role };
+  async login(user: UserDto): Promise<{ access_token: string }> {
+    const payload = {    
+      sub: user.userId,
+      email: user.email,
+      role: user.role
+    };
+
     return {
       access_token: this.jwtService.sign(payload),
     };
   }
+}
+
+export interface UserDto {
+  userId: string; // ID como cadena
+  email: string;
+  role: string;
 }

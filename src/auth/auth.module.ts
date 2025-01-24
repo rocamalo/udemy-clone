@@ -6,17 +6,16 @@ import { AuthService } from './auth.service';
 import { AuthController } from './auth.controller';
 import { LocalStrategy } from './local.strategy';
 import { JwtStrategy } from './jwt.strategy';
+import { SharedModule } from 'src/shared/shared.module';
 
 @Module({
   imports: [
     UsersModule,
     PassportModule,
-    JwtModule.register({
-      secret: 'secretKey', // Reemplazar con una clave más segura
-      signOptions: { expiresIn: '1h' }, // Expiración del token
-    }),
+    SharedModule
   ],
   providers: [AuthService, LocalStrategy, JwtStrategy],
   controllers: [AuthController],
+  exports: [],
 })
 export class AuthModule {}

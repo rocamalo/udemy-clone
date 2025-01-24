@@ -4,7 +4,7 @@ import { Document } from 'mongoose';
 export type UserDocument = User & Document;
 
 @Schema()
-export class User {
+export class User extends Document {
   @Prop({ required: true })
   username: string;
 
@@ -14,7 +14,7 @@ export class User {
   @Prop({ required: true })
   password: string;
 
-  @Prop({ enum: ['admin', 'teacher', 'student'], default: 'student' })
+  @Prop({ required: true, default: 'student', enum: ['student', 'teacher', 'admin'] }) // Nuevo campo de rol
   role: string;
 
   @Prop({ default: Date.now })
