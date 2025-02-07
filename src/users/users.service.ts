@@ -23,7 +23,7 @@ export class UsersService {
   }
 
   async findAllUsers(): Promise<User[]> {
-    return this.userModel.find().exec();
+    return this.userModel.find({}, 'username email role').exec();
   }
 
   async updateUser(email: string, userData: Partial<User>): Promise<User | null> {

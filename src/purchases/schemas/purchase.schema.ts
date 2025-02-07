@@ -1,5 +1,5 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { Document } from 'mongoose';
+import { Document, Types } from 'mongoose';
 import mongoose from 'mongoose';
 
 export type PurchaseDocument = Purchase & Document;
@@ -17,6 +17,16 @@ export class Purchase {
 
   @Prop({ required: true })
   commission: number; // Comisión para el administrador
+
+  @Prop({ required: true })
+  status: String;// { type: String, enum: ['active', 'cancelled'], default: 'active' } // Nuevo campo
+
+  @Prop({ ref: 'Payment' })
+  payment?: mongoose.Schema.Types.ObjectId;
+
+
+  @Prop({ default: Date.now })
+  createdAt: Date;
 }
 
 export const PurchaseSchema = SchemaFactory.createForClass(Purchase);

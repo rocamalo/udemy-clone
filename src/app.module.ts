@@ -8,9 +8,10 @@ import { ProtectedModule } from './protected-example/protected.module';
 import { CoursesModule } from './courses/courses.module';
 import { EnrollmentsModule } from './enrollments/enrollments.module';
 import { PurchasesModule } from './purchases/purchases.module';
+import { PaymentsModule } from './payments/payments.module';
 
 @Module({
-  imports: [DatabaseModule, UsersModule, AuthModule, ProtectedModule, CoursesModule, EnrollmentsModule, PurchasesModule],
+  imports: [DatabaseModule, UsersModule, AuthModule, ProtectedModule, CoursesModule, EnrollmentsModule, PurchasesModule, PaymentsModule],
   controllers: [AppController],
   providers: [AppService],
 })

@@ -7,6 +7,7 @@ import { CoursesModule } from '../courses/courses.module'; // Para verificar cur
 import { UsersModule } from '../users/users.module'; // Para verificar usuarios
 import { SharedModule } from 'src/shared/shared.module';
 import { EnrollmentsModule } from 'src/enrollments/enrollments.module';
+import { PaymentsModule } from 'src/payments/payments.module';
 
 @Module({
   imports: [
@@ -14,6 +15,7 @@ import { EnrollmentsModule } from 'src/enrollments/enrollments.module';
     CoursesModule, // Importar para validar cursos
     UsersModule,   // Importar para validar estudiantes
     EnrollmentsModule,
+    PaymentsModule,
     SharedModule
   ],
   controllers: [PurchasesController],
